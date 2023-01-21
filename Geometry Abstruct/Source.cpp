@@ -1,4 +1,4 @@
-#define _USE_MATH_DEFINES
+п»ї#define _USE_MATH_DEFINES
 #include <iostream>
 #include <windows.h>
 #include<cmath>
@@ -13,7 +13,7 @@ namespace Geometry
 		blue =0x00FF0000,
 		yellow = 0x0000FFFF,
 
-		console_default = 0x07, //Hex-код цвета, первая цифра цвет фона, вторая - цвет текста
+		console_default = 0x07, //Hex-РєРѕРґ С†РІРµС‚Р°, РїРµСЂРІР°СЏ С†РёС„СЂР° С†РІРµС‚ С„РѕРЅР°, РІС‚РѕСЂР°СЏ - С†РІРµС‚ С‚РµРєСЃС‚Р°
 		console_red = 0xCC,
 		console_green = 0xAA,
 		console_blue = 0x99,
@@ -21,12 +21,12 @@ namespace Geometry
 	};
 	/*
 	-----------------------------------------------------------
-	enum (enumeration) - это перечисление.
-	Перечисление - это набор именованных констант типа Int
+	enum (enumeration) - СЌС‚Рѕ РїРµСЂРµС‡РёСЃР»РµРЅРёРµ.
+	РџРµСЂРµС‡РёСЃР»РµРЅРёРµ - СЌС‚Рѕ РЅР°Р±РѕСЂ РёРјРµРЅРѕРІР°РЅРЅС‹С… РєРѕРЅСЃС‚Р°РЅС‚ С‚РёРїР° Int
 	-----------------------------------------------------------
 	*/
 
-	class Shape //абстрактный базовый класс Геометрических фигур
+	class Shape //Р°Р±СЃС‚СЂР°РєС‚РЅС‹Р№ Р±Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ Р“РµРѕРјРµС‚СЂРёС‡РµСЃРєРёС… С„РёРіСѓСЂ
 	{
 	protected:
 		static const int MIN_START_X = 10;
@@ -80,15 +80,15 @@ namespace Geometry
 
 		virtual void info() const
 		{
-			cout << "Площадь: " << get_area() << endl;
-			cout << "Периметр: " << get_perimeter() << endl<<endl;
+			cout << "РџР»РѕС‰Р°РґСЊ: " << get_area() << endl;
+			cout << "РџРµСЂРёРјРµС‚СЂ: " << get_perimeter() << endl<<endl;
 			draw();
 		}
 	};
 
-	class Parallelogram:public Shape /// Олег, сделала прямоугольник подклассом параллелограмма, а квадрат подклас прямоугольника
-		// осталась проблема с рисованием фигур, выводит через раз, и как-то рандомно (то круг выведет, то треугольник, то куски прямоугольника и т.п.),
-		//не понимаю почему
+	class Parallelogram:public Shape /// РћР»РµРі, СЃРґРµР»Р°Р»Р° РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє РїРѕРґРєР»Р°СЃСЃРѕРј РїР°СЂР°Р»Р»РµР»РѕРіСЂР°РјРјР°, Р° РєРІР°РґСЂР°С‚ РїРѕРґРєР»Р°СЃ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
+		// РѕСЃС‚Р°Р»Р°СЃСЊ РїСЂРѕР±Р»РµРјР° СЃ СЂРёСЃРѕРІР°РЅРёРµРј С„РёРіСѓСЂ, РІС‹РІРѕРґРёС‚ С‡РµСЂРµР· СЂР°Р·, Рё РєР°Рє-С‚Рѕ СЂР°РЅРґРѕРјРЅРѕ (С‚Рѕ РєСЂСѓРі РІС‹РІРµРґРµС‚, С‚Рѕ С‚СЂРµСѓРіРѕР»СЊРЅРёРє, С‚Рѕ РєСѓСЃРєРё РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР° Рё С‚.Рї.),
+		//РЅРµ РїРѕРЅРёРјР°СЋ РїРѕС‡РµРјСѓ
 	{
 		double length;
 		double width;
@@ -125,7 +125,7 @@ namespace Geometry
 			angle *= M_PI / 180;
 			this->angle = angle;
 		}
-		// Конструктор
+		// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
 		Parallelogram(double length, double width, double angle, int start_x, int start_y, int line_width, Color color) :Shape(start_x, start_y, line_width, color)
 		{
 			set_length(length);
@@ -143,7 +143,7 @@ namespace Geometry
 		}
 		void draw() const
 		{
-			/*HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); //подключаем Обработчик консоли
+			/*HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); //РїРѕРґРєР»СЋС‡Р°РµРј РћР±СЂР°Р±РѕС‚С‡РёРє РєРѕРЅСЃРѕР»Рё
 			SetConsoleTextAttribute(hConsole, color);
 			for (int i = 0; i < length; i++)
 			{
@@ -155,11 +155,11 @@ namespace Geometry
 			}
 			SetConsoleTextAttribute(hConsole, Color::console_default);
 			*/
-			HWND hwnd = GetConsoleWindow(); //получаем окно консоли
-			HDC hdc = GetDC(hwnd); //получаем контекст устройства для окна консоли
-			HPEN hPen = CreatePen(PS_SOLID, line_width, color);//выбираем чем будем рисовать pen - карандаш - рисует линию
-			HBRUSH hBrush = CreateSolidBrush(RGB(0, 0, 0)); // Brush - кисть - рисует заливку замкнутой фигуры
-			SelectObject(hdc, hPen); //выбираем чем (hPen) и на чем (hdc) будем рисовать
+			HWND hwnd = GetConsoleWindow(); //РїРѕР»СѓС‡Р°РµРј РѕРєРЅРѕ РєРѕРЅСЃРѕР»Рё
+			HDC hdc = GetDC(hwnd); //РїРѕР»СѓС‡Р°РµРј РєРѕРЅС‚РµРєСЃС‚ СѓСЃС‚СЂРѕР№СЃС‚РІР° РґР»СЏ РѕРєРЅР° РєРѕРЅСЃРѕР»Рё
+			HPEN hPen = CreatePen(PS_SOLID, line_width, color);//РІС‹Р±РёСЂР°РµРј С‡РµРј Р±СѓРґРµРј СЂРёСЃРѕРІР°С‚СЊ pen - РєР°СЂР°РЅРґР°С€ - СЂРёСЃСѓРµС‚ Р»РёРЅРёСЋ
+			HBRUSH hBrush = CreateSolidBrush(RGB(0, 0, 0)); // Brush - РєРёСЃС‚СЊ - СЂРёСЃСѓРµС‚ Р·Р°Р»РёРІРєСѓ Р·Р°РјРєРЅСѓС‚РѕР№ С„РёРіСѓСЂС‹
+			SelectObject(hdc, hPen); //РІС‹Р±РёСЂР°РµРј С‡РµРј (hPen) Рё РЅР° С‡РµРј (hdc) Р±СѓРґРµРј СЂРёСЃРѕРІР°С‚СЊ
 			SelectObject(hdc, hBrush);
 
 			CONST POINT vertex[] =
@@ -173,16 +173,16 @@ namespace Geometry
 			::Polygon(hdc, vertex, 4);
 
 			DeleteObject(hBrush);
-			DeleteObject(hPen); // удаляем объект hPen
-			ReleaseDC(hwnd, hdc); //освобождаем контекст устройства ОБЯЗАТЕЛЬНО
+			DeleteObject(hPen); // СѓРґР°Р»СЏРµРј РѕР±СЉРµРєС‚ hPen
+			ReleaseDC(hwnd, hdc); //РѕСЃРІРѕР±РѕР¶РґР°РµРј РєРѕРЅС‚РµРєСЃС‚ СѓСЃС‚СЂРѕР№СЃС‚РІР° РћР‘РЇР—РђРўР•Р›Р¬РќРћ
 
 		}
 		void info() const
 		{
 			cout << typeid(*this).name() << endl;
-			cout << "Длина: " << length << endl;
-			cout << "Ширина: " << width << endl;
-			cout << "Угол: " << angle << endl;
+			cout << "Р”Р»РёРЅР°: " << length << endl;
+			cout << "РЁРёСЂРёРЅР°: " << width << endl;
+			cout << "РЈРіРѕР»: " << angle << endl;
 			Shape::info();
 
 		}
@@ -201,8 +201,8 @@ namespace Geometry
 			void info() const
 			{
 				cout << typeid(*this).name() << endl;
-				cout << "Длина: " << get_length() << endl;
-				cout << "Ширина: " << get_width() << endl;
+				cout << "Р”Р»РёРЅР°: " << get_length() << endl;
+				cout << "РЁРёСЂРёРЅР°: " << get_width() << endl;
 				Shape::info();
 			}
 		
@@ -217,7 +217,7 @@ namespace Geometry
 		void info() const
 		{
 			cout << typeid(*this).name() << endl;
-			cout << "Длина стороны: " << get_length() << endl;
+			cout << "Р”Р»РёРЅР° СЃС‚РѕСЂРѕРЅС‹: " << get_length() << endl;
 			Shape::info();
 		}
 		~Square(){}
@@ -260,7 +260,7 @@ namespace Geometry
 			HDC hdc = GetDC(hwnd);
 
 			HPEN hPen = CreatePen(PS_SOLID, 5, color);
-			HBRUSH hBrush = CreateSolidBrush(color); // Solid - означает сплошную заливку/линию без текстуры
+			HBRUSH hBrush = CreateSolidBrush(color); // Solid - РѕР·РЅР°С‡Р°РµС‚ СЃРїР»РѕС€РЅСѓСЋ Р·Р°Р»РёРІРєСѓ/Р»РёРЅРёСЋ Р±РµР· С‚РµРєСЃС‚СѓСЂС‹
 			SelectObject(hdc, hPen);
 			SelectObject(hdc, hBrush);
 
@@ -273,7 +273,7 @@ namespace Geometry
 		void info() const
 		{
 			cout << typeid(*this).name() << endl;
-			cout << "Радиус: " << radius << endl;
+			cout << "Р Р°РґРёСѓСЃ: " << radius << endl;
 			Shape::info();
 		}
 	};
@@ -287,15 +287,15 @@ public:
 	~Triangle(){}
 	void info() const
 	{
-		cout << "Высота треугольника: " << get_height() << endl;
+		cout << "Р’С‹СЃРѕС‚Р° С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°: " << get_height() << endl;
 		Shape::info();
 	}
 };
 
-class IsoscalesTriangle : public Triangle //равнобедренный треугольник
+class IsoscalesTriangle : public Triangle //СЂР°РІРЅРѕР±РµРґСЂРµРЅРЅС‹Р№ С‚СЂРµСѓРіРѕР»СЊРЅРёРє
 {
-	double base; //основание
-	double side; // длина стороны
+	double base; //РѕСЃРЅРѕРІР°РЅРёРµ
+	double side; // РґР»РёРЅР° СЃС‚РѕСЂРѕРЅС‹
 public:
 	double get_base() const
 	{
@@ -321,7 +321,7 @@ public:
 		:Triangle(start_x, start_y, line_width, color)
 	{
 		set_base(base);
-		set_side(side);
+		set_side(side);   
 	}
 	~IsoscalesTriangle(){}
 
@@ -363,8 +363,8 @@ public:
 	void info() const
 	{
 		cout << typeid(*this).name() << endl;
-		cout << "Основание треугольника: " << base << endl;
-		cout << "Длина стороны: " << side << endl;
+		cout << "РћСЃРЅРѕРІР°РЅРёРµ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°: " << base << endl;
+		cout << "Р”Р»РёРЅР° СЃС‚РѕСЂРѕРЅС‹: " << side << endl;
 		Triangle::info();
 
 	}
@@ -376,10 +376,10 @@ void main()
 {
 	setlocale(LC_ALL, "");
 	Geometry::Rectangle rect(70, 350, 90, 100, 100, 15, Geometry::Color::red);
-	/*cout << "Длина прямоугольника: " << rect.get_length()<<endl;
-	cout << "Ширина прямоугольника: " << rect.get_width()<<endl;
-	cout << "Площадь прямоугольника: " << rect.get_area() << endl;
-	cout << "Периметр прямоугольника: " << rect.get_perimeter() << endl;
+	/*cout << "Р”Р»РёРЅР° РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°: " << rect.get_length()<<endl;
+	cout << "РЁРёСЂРёРЅР° РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°: " << rect.get_width()<<endl;
+	cout << "РџР»РѕС‰Р°РґСЊ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°: " << rect.get_area() << endl;
+	cout << "РџРµСЂРёРјРµС‚СЂ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°: " << rect.get_perimeter() << endl;
 	rect.draw();*/
 	rect.info();
 
